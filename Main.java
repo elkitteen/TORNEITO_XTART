@@ -9,8 +9,12 @@ public class Main {
         Personaje ayanokoji = new Personaje("Ayanokoji", 100, 15, 30);
 
         sungjinwoo.atacar(ayanokoji);
+        System.out.println(sungjinwoo.getVida());
 
         ayanokoji.atacar(sungjinwoo);
+
+        sungjinwoo.registrarInventario();
+        System.out.println(sungjinwoo.getVida());
 
     }
 
