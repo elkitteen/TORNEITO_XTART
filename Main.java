@@ -4,6 +4,14 @@ public class Main {
         
         System.out.println("Hola mundo");
 
+        Personaje sungjinwoo = new Personaje("Sung Jinwoo", 100, 15, 30);
+
+        Personaje ayanokoji = new Personaje("Ayanokoji", 100, 15, 30);
+
+        sungjinwoo.atacar(ayanokoji);
+
+        ayanokoji.atacar(sungjinwoo);
+
     }
 
 }

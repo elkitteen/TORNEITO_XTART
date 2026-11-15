@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Personaje {
 
     private String nombre;
@@ -61,6 +63,28 @@ public class Personaje {
 
     public void setNumPuntos(double numPuntos) {
         this.numPuntos = numPuntos;
+    }
+
+    public void atacar(Personaje objetivo) {
+
+        Random random = new Random();
+
+        int danio = random.nextInt((danioMax - danioMin) + 1) + danioMin;
+        System.out.println(this.nombre + " ataca y produce " + danio + " de daño ");
+
+        objetivo.recibirDanio(danio);
+    }
+
+    public void recibirDanio(int danio) {
+
+        this.vida = vida - danio;
+
+        if (this.vida < 0) {
+            this.vida = 0;
+        }
+
+        System.out.println(this.nombre + " recibe " + danio + " de daño \n");
+
     }
 
     
