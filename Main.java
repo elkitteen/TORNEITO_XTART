@@ -1,16 +1,179 @@
 import java.util.Scanner;
 
 public class Main {
-    
+
     public static void main(String[] args) {
-        
-        System.out.println("Hola mundo");
 
-        Personaje sungjinwoo = new Personaje("Sung Jinwoo", 100, 15, 30);
+        menuPrincipal();
 
-        Personaje ayanokoji = new Personaje("Ayanokoji", 100, 25, 30);
+    }
 
-        simularCombate(sungjinwoo, ayanokoji);
+    public static void menuPrincipal() {
+
+        boolean menuActivo = true;
+
+        while (menuActivo) {
+
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.println(
+                    "-------------------------------------------------------------------------------------------------------");
+            System.out
+                    .println("            BIENVENIDO A TORNEITO XTART -- LOS MEJORES 5 CLASIFICADOS SE GANAN 5 EUROS");
+            System.out.println(
+                    "-------------------------------------------------------------------------------------------------------");
+
+            System.out.println("\n1) Nueva Partida \n\n2) Consultar Ranking \n\n3) Ayuda \n\n4) Salir\n\n");
+
+            System.out.println(
+                    "Patrocinadores Oficiales: El Cortes Inglés ------ MediaMarkt ----- Apple ---- Ajuntament de Valencia ---- Samsung ---- Copa Monopatín \n");
+
+            String menuOpcion = scanner.nextLine();
+            System.out.println("\n");
+
+            switch (menuOpcion) {
+                case "1":
+
+                    iniciarPartida(scanner);
+
+                    break;
+
+                case "2":
+
+                    consultarRankingProvisional(scanner);
+
+                    break;
+
+                case "3":
+
+                    mostrarAyuda(scanner);
+
+                    break;
+
+                case "4":
+
+                    menuActivo = false;
+                    break;
+
+                default:
+                    System.out.println("Opción Invalida");
+                    break;
+            }
+
+        }
+
+    }
+
+    public static void iniciarPartida(Scanner scanner) {
+
+        System.out.println("==========================================");
+        System.out.println("           EL DESPERTAR DEL HÉROE         ");
+        System.out.println("==========================================\n");
+
+        System.out.println(
+                "Caminas de noche en medio de la lluvia en Plaza Espanya, Valencia y entras a Xtart para resguardarte. Ángela, de recepción, te mira con desconfianza y te pregunta:");
+        System.out.print("— Eh, tú, ¿eres estudiante?... ¿Cómo te llamas?: ");
+        String nombreJugador = scanner.nextLine();
+
+        Personaje jugador = new Personaje(nombreJugador, 100, 15, 25);
+
+        System.out.println("\n— Bien, " + jugador.getNombre()
+                + ". Si quieres salir de este edificio con vida, tendrás que abrirte paso.");
+        System.out.println(
+                "Subes las escaleras hacia el piso 1. Entre las sombras aparece una figura bloqueando el paso.");
+        System.out.println("— ¡Alto ahí! Nadie pasa por mi piso sin pagar peaje —grita José Luis.\n");
+
+        Personaje joseLuis = new Personaje("José Luis", 60, 8, 14);
+        boolean ganoCombate1 = simularCombate(jugador, joseLuis);
+
+        if (!ganoCombate1) {
+            return;
+        }
+
+        System.out.println(
+                "José Luis cae derrotado al suelo. Logras subir al piso 3 y haces una pequeña parada en el baño.");
+        System.out.println(
+                "La iluminación es muy baja. Enciendes la luz; un monstruo con armadura oxidada y cara de diablo afila su espada.");
+        System.out.println(
+                "— Así que tú eres el que derrotó a José Luis... Veamos si puedes contra mí. Jarvis, activa el modo combate —dice Esteban.\n");
+
+        Personaje esteban = new Personaje("Esteban", 85, 12, 18);
+        boolean ganoCombate2 = simularCombate(jugador, esteban);
+
+        if (!ganoCombate2) {
+            return;
+        }
+
+        System.out.println(
+                "Esteban cae de rodillas, vencido. Subes al último piso y finalmente llegas a las puertas de la fortaleza.");
+        System.out.println("Allí te espera el líder de la guardia, imponente y con una mirada fría.");
+        System.out.println("— Has llegado lejos, " + jugador.getNombre()
+                + ", pero tu viaje termina aquí. Te enseñaré de lo que es capaz el rey de los kahoots —sentencia Pedro.\n");
+
+        Personaje pedro = new Personaje("Pedro", 110, 15, 22);
+        boolean ganoCombate3 = simularCombate(jugador, pedro);
+
+        if (!ganoCombate3) {
+            return;
+        }
+
+        System.out.println("==========================================");
+        System.out.println("¡FELICIDADES " + jugador.getNombre().toUpperCase() + "!");
+        System.out.println("Has derrotado a José Luis, Esteban y Pedro.");
+        System.out.println("Puntuación final: " + jugador.getNumPuntos() + " puntos.");
+        System.out.println("==========================================\n");
+
+    }
+
+    //CONSULTAR RANKING PROVISIONAL
+    public static void consultarRankingProvisional(Scanner scanner) {
+
+        boolean mostrarRanking = true;
+        while (mostrarRanking) {
+
+            System.out.println("ESTEBAN --- 300PTS");
+            System.out.println("PEDRO --- 200PTS");
+            System.out.println("JOSE LUIS --- 100PTS \n");
+
+            System.out.println("1) Volver \n");
+            String rankingOpcion = scanner.nextLine();
+
+            if (rankingOpcion.equalsIgnoreCase("1")) {
+                mostrarRanking = false;
+
+            }
+        }
+
+    }
+
+    // public static void leer xml();
+
+    // public static void editar xml();
+
+
+    public static void mostrarAyuda(Scanner scanner) {
+
+        boolean mostrarAyuda = true;
+
+        while (mostrarAyuda) {
+
+            System.out.println(
+                    "¿QUÉ ES TORNEITO XTART?: ES UN JUEGO EN DONDE COMPETIRAS DERROTANDO ENEMIGOS. SI CONSIGUES SUFICIENTES PUNTOS PODRÁS CLASIFICAR EN EL RANKING Y COMPETIR POR GRANDES PREMIOS \n\n ");
+
+            System.out.println(
+                    "CUANDO EMPIECE UN COMBATE PODRAS DECIDIR ENTRE ATACAR, REVISAR INVENTARIO Y ABANDONAR. ASEGURATE DE ATACAR Y SI NECESITAS CURARTE PUEDES REVISAR INVENTARIO. SIEMPRE TENDRAS 3 CURACIONES PERO CUIDADO QUE SE AGOTAN.\n\n ");
+
+            System.out.println(
+                    "QUE PASA SI ABANDONO?: SI ABANDONAS VOLVERAS AL MENÚ PRINCIPAL, SIN EMBARGO, LOS PUNTOS QUE HAYAS GANADO SE GUARDARAN EN EL RANKING \n\n ");
+
+            System.out.println("1) Volver");
+            String mostrarAyudaOpcion = scanner.nextLine();
+
+            if (mostrarAyudaOpcion.equals("1")) {
+                mostrarAyuda = false;
+            }
+
+        }
 
     }
 
@@ -82,7 +245,6 @@ public class Main {
             System.out.println("HAS PERDIDO TODOS TUS PUNTOS.");
             System.out.println("VOLVIENDO AL MENÚ PRINCIPAL...");
             jugador.setNumPuntos(0);
-            
 
             return false;
 
@@ -94,7 +256,6 @@ public class Main {
             System.out.println("HAS GANADO 100 PUNTOS.");
             System.out.println("SIGUES AVANZANDO...");
             jugador.setNumPuntos(jugador.getNumPuntos() + 100);
-            
 
             return true;
 
@@ -106,11 +267,10 @@ public class Main {
             System.out.println("HAS ABANDONADO, QUE MANCO.");
             System.out.println("HAS ACUMULADO: " + jugador.getNumPuntos() + " PUNTOS.");
             System.out.println("VOLVIENDO AL MENÚ PRINCIPAL...");
-            
+
             return false;
         }
 
     }
-
 
 }
