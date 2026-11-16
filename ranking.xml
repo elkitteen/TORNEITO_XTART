@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE torneito SYSTEM "ranking.dtd">
+
+<torneito>
+
+    <ranking>
+
+        <jugador id = "1">
+
+            <nombre>Esteban</nombre>
+            <puntuacion>300</puntuacion>
+
+        </jugador>
+
+        <jugador id = "2">
+
+            <nombre>Pedro</nombre>
+            <puntuacion>200</puntuacion>
+
+        </jugador>
+
+        <jugador id = "3">
+
+            <nombre>Jose Luis</nombre>
+            <puntuacion>100</puntuacion>
+
+        </jugador>
+
+        <jugador id = "4">
+
+            <nombre></nombre>
+            <puntuacion></puntuacion>
+
+        </jugador>
+
+        <jugador id = "5">
+
+            <nombre></nombre>
+            <puntuacion></puntuacion>
+
+        </jugador>
+
+    </ranking>
+
+</torneito>

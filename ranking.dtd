@@ -1,0 +1,8 @@
+<!ELEMENT torneito (ranking)>
+<!ELEMENT ranking (jugador+)>
+<!ELEMENT jugador (nombre, puntuacion)>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT puntuacion (#PCDATA)>
+
+<!ATTLIST jugador
+id CDATA #REQUIRED>
