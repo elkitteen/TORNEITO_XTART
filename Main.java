@@ -30,6 +30,7 @@ public class Main {
         EntradaRanking(String nombre, double puntuacion) {
             this.nombre = nombre;
             this.puntuacion = puntuacion;
+            
         }
     }
 

@@ -1,28 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE torneito SYSTEM "ranking.dtd">
 <torneito>
-                                                                                                                    
+                                                                                                                
+    
     <ranking>
         <jugador id="1">
-            <nombre>Ayanokoji</nombre>
-            <puntuacion>300</puntuacion>
+            <nombre>ANGELA RECEPCION</nombre>
+            <puntuacion>305</puntuacion>
         </jugador>
         <jugador id="2">
-            <nombre>Raffaele</nombre>
-            <puntuacion>300</puntuacion>
-        </jugador>
-        <jugador id="3">
-            <nombre>Gloria</nombre>
-            <puntuacion>241</puntuacion>
-        </jugador>
-        <jugador id="4">
             <nombre>Alba</nombre>
             <puntuacion>200</puntuacion>
         </jugador>
+        <jugador id="3">
+            <nombre>Raffaele</nombre>
+            <puntuacion>200</puntuacion>
+        </jugador>
+        <jugador id="4">
+            <nombre>Raffaele</nombre>
+            <puntuacion>100</puntuacion>
+        </jugador>
         <jugador id="5">
-            <nombre>ICONO SUPER PRIME</nombre>
-            <puntuacion>150</puntuacion>
+            <nombre>Gloria</nombre>
+            <puntuacion>0</puntuacion>
         </jugador>
     </ranking>
-                                    
+                                                            
+
 </torneito>
