@@ -9,7 +9,7 @@ public class Personaje {
     private String[] inventario;
     private int danioMin;
     private int danioMax;
-    private double numPuntos;
+    private int numPuntos;
 
     public Personaje(String nombre, int vida, int danioMin, int danioMax) {
         this.nombre = nombre;
@@ -63,11 +63,11 @@ public class Personaje {
         this.danioMax = danioMax;
     }
 
-    public double getNumPuntos() {
+    public int getNumPuntos() {
         return numPuntos;
     }
 
-    public void setNumPuntos(double numPuntos) {
+    public void setNumPuntos(int numPuntos) {
         this.numPuntos = numPuntos;
     }
 
