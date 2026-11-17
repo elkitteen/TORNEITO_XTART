@@ -1,9 +1,41 @@
+import java.io.File;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
+import java.io.File;
+import org.w3c.dom.Node;
+
 
 public class Main {
 
     public static void main(String[] args) {
 
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         menuPrincipal();
 
     }
@@ -40,7 +72,7 @@ public class Main {
 
                 case "2":
 
-                    consultarRankingProvisional(scanner);
+                    mostrarRanking(scanner);
 
                     break;
 
@@ -121,32 +153,59 @@ public class Main {
         System.out.println("¡FELICIDADES " + jugador.getNombre().toUpperCase() + "!");
         System.out.println("Has derrotado a José Luis, Esteban y Pedro.");
         System.out.println("Puntuación final: " + jugador.getNumPuntos() + " puntos.");
+        
         System.out.println("==========================================\n");
 
     }
 
-    //CONSULTAR RANKING PROVISIONAL
-    public static void consultarRankingProvisional(Scanner scanner) {
-
+    //METODO NUEVO PARA LEER EL XML
+    public static void mostrarRanking(Scanner scanner) {
+        
         boolean mostrarRanking = true;
+
         while (mostrarRanking) {
+            
+            try {
+            File archivo = new File("ranking.xml");
+            DocumentBuilderFactory fabrica = DocumentBuilderFactory.newInstance();
+            DocumentBuilder constructor = fabrica.newDocumentBuilder();
+            Document documento = constructor.parse(archivo);
+            documento.getDocumentElement().normalize();
 
-            System.out.println("ESTEBAN --- 300PTS");
-            System.out.println("PEDRO --- 200PTS");
-            System.out.println("JOSE LUIS --- 100PTS \n");
+            NodeList lista = documento.getElementsByTagName("jugador");
 
-            System.out.println("1) Volver \n");
-            String rankingOpcion = scanner.nextLine();
+            System.out.println("========= TOP " + lista.getLength() + " RANKING =========");
 
-            if (rankingOpcion.equalsIgnoreCase("1")) {
-                mostrarRanking = false;
+            for (int i = 0; i < lista.getLength(); i++) {
+                Element jugador = (Element) lista.item(i);
 
+                String id = jugador.getAttribute("id");
+                String nombre = jugador.getElementsByTagName("nombre").item(0).getTextContent();
+                String puntuacion = jugador.getElementsByTagName("puntuacion").item(0).getTextContent();
+
+                System.out.println("#" + id + " | " + nombre + " - " + puntuacion + " pts");
             }
+            System.out.println("===================================\n");
+
+        } catch (Exception e) {
+            System.out.println("Error al leer el ranking XML: " + e.getMessage());
         }
+
+        System.out.println("1) Volver");
+        String mostrarRankingDecision = scanner.nextLine();
+
+        if (mostrarRankingDecision.equals("1")) {
+            mostrarRanking = false;
+        }
+
 
     }
 
-    // public static void leer xml();
+        }
+
+        
+    
+
 
     // public static void editar xml();
 
